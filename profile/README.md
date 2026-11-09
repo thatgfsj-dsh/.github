@@ -21,6 +21,7 @@
 
 <p align="center">
   <a href="#关于">关于</a> ·
+  <a href="#核心-skills">核心 skills</a> ·
   <a href="#插件">插件</a> ·
   <a href="#安装">安装</a> ·
   <a href="#迁移状态">迁移状态</a> ·
@@ -34,6 +35,25 @@
 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（DSH）是可扩展的 agent harness。这个组织用来收纳 Thatgfsj 维护的 DSH 插件与技能：输入预测、情绪可视化、Android 实例、安装迁移、上下文压缩、Trae API 适配等。
 
 目标很简单：**插件有独立仓库、独立 README、可单独安装**；不再散落在个人账号的时间线里。
+
+## 核心 skills
+
+技能（`SKILL.md`）和插件是两类东西：插件是运行时加载的代码，技能是教 agent 做事的一套可复用流程与知识。装进用户级技能目录 `~/.dsh/skills` 后，agent 会按需加载对应技能。
+
+| 技能包 | 用途 |
+|---|---|
+| [dsh-plugin-skills](https://github.com/thatgfsj-dsh/dsh-plugin-skills) | DSH 插件构建 / 魔改指南 + 技能编写指南；按适配的 dsh 版本分目录（当前 `0.2.2-rc.1`），附带由本机安装产物生成的内部结构地图（服务 / 事件 / slot / 包） |
+
+安装：
+
+```sh
+git clone https://github.com/thatgfsj-dsh/dsh-plugin-skills.git
+cd dsh-plugin-skills
+bash scripts/install.sh --dry-run   # 看会装哪个版本、装什么
+bash scripts/install.sh             # 默认装与本机 `dsh --version` 同名的版本目录
+```
+
+装完新开一个会话，即可在技能目录里看到 `dsh-plugin-construction` 与 `dsh-skill-authoring`；选版本 = 选与你的 `dsh --version` 一致的目录。
 
 ## 插件
 
@@ -61,7 +81,7 @@ dsh plugin --profile web add <包名 / 本地目录 / tgz>
 
 - 个人账号里的 DSH 插件正在迁入本组织；旧链接可能仍可用，但新地址以本页为准。
 - `dsh-ops`、`dsh-trae-api`、`dsh-composer-assist` 在组织内是 fork，主开发仓库/上游见各仓库说明；`dsh-ops` 的主仓库仍在 [T-Auto/dsh-ops](https://github.com/T-Auto/dsh-ops)。
-- [dsh-plugin-skills](https://github.com/Thatgfsj/dsh-plugin-skills) 是 DSH 插件构建 / 技能编写指南，仍留在个人账号。
+- [dsh-plugin-skills](https://github.com/thatgfsj-dsh/dsh-plugin-skills) 已从个人账号迁入本组织，作为本组织的核心技能包维护。
 
 ## 相关
 
